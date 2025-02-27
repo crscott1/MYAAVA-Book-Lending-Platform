@@ -71,7 +71,7 @@ Before running, make sure to install Mysql.
    spring.datasource.url=jdbc:mysql://localhost:3306/book-lending-system
    spring.datasource.username=yourUsername
    spring.datasource.password=yourPassword
-   spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
    ```
    
 4. The primary startup file is typically located at `src/main/java/edu/arizona/csc536/coomunity_book_lending_system/CoomunityBookLendingSystemApplication.java`. This file usually contains the main method, which is the entry point for a Spring Boot application. It configures the application automatically by extending the SpringBootApplication class and scans for related components, allowing you to start the application either from the IDE or via the command line by executing the following command:
