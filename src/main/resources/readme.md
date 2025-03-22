@@ -37,4 +37,8 @@ SELECT * FROM user LIMIT 5;
 ```
 You will get output similar to the following:
 
-<img width="417" alt="36bb3306a09cd9c3f78b9876d947eb8" src="https://github.com/user-attachments/assets/0a1e783f-404c-4255-a426-47120efdaa18" />
+<img width="417" alt="36bb3306a09cd9c3f78b9876d947eb8" src="https://github.com/user-attachments/assets/0a1e783f-404c-4255-a426-47120efdaa18" />   
+
+#
+**Now you have successfully connected to the database. What remains is to configure your project to connect to your database.**   
+**Please refer to the readme.md on the homepage.**
