@@ -82,4 +82,31 @@ If you suceesfully run the project with SpringBoot based on the database, you ca
 
 ![image](https://github.com/user-attachments/assets/fcf0914f-9775-4877-8e76-32a4955207dd)
 
+
+## 2. Development Logic
+### Main Business Logic Directory: src/main
+1. java/edu.arizona.csc536.book_lending_system (Main Package) : This is the main package that contains various modules and follows the standard structure of a Spring Boot project.
+   - controller: Controller Layer
+     Receives requests from the frontend (or external clients). Processes request parameters and paths. Calls the service layer to execute business logic. Returns the result (e.g., JSON) to the frontend
+     Responsible for handling user requests (HTTP), and calling the service layer to process logic and return results.  
+     It contains interfaces for adding books, adding borrowers, deleting books, borrowing books, etc.
+     - AdminController: Interfaces related to administrator functions, such as login, permission management, and adding/deleting users.
+     - BookController: Interfaces for book management, such as adding new books, deleting books, updating book information, and searching books by category.
+     - BorrowingController: Interfaces for borrowing actions, such as borrowing books, returning books, and viewing borrowing records.
+     - UserController: Interfaces for user-side operations, such as user registration, updating personal information, and viewing personal borrowing history.
+
+   - domain: Entity/Model Layer  
+     Defines the core data structures of the system, such as Book, User, etc.
+
+   - mapper: Mapping Layer (MyBatis Mapper)  
+     Handles database operations and maps domain objects to database tables.
+
+   - service: Business Logic Layer
+     Core business logic, such as borrowing and returning books, user login checks, etc.
+     
+   - utils.page: Utility Package
+     A helper package commonly used for handling pagination (e.g., for displaying paginated lists in admin panels or user interfaces).
+     
+
+
    
