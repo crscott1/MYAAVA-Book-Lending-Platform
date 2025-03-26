@@ -65,6 +65,8 @@ Before running, make sure to install Mysql.
      ```
      source src/main/resources/db/book_lending_system.sql;
      ```
+     ![image](https://github.com/user-attachments/assets/4fd3dc77-2eab-406f-b231-dca36174b0ab)
+
 2. Equip application's configuration files(`application.properties`) include the necessary DataSource settings, especially the JDBC URL. Change the username and password to your local mysql username and password.
    ```
    spring.application.name=book_lending_system
