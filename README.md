@@ -86,8 +86,8 @@ If you suceesfully run the project with SpringBoot based on the database, you ca
 
 
 ## 2. Development Logic
-Before that, run sql file in MySQL. Make sure the database and table name are the same.
-![image](https://github.com/user-attachments/assets/7309db18-50a1-44ba-9a69-a815e10b86ca)
+Before that, run sql file in MySQL. Make sure the database and table name are the same.   
+![image](https://github.com/user-attachments/assets/7309db18-50a1-44ba-9a69-a815e10b86ca)    
 
 ### Main Business Logic Directory: src/main
 1. java/edu.arizona.csc536.book_lending_system (Main Package) : This is the main package that contains various modules and follows the standard structure of a Spring Boot project.
