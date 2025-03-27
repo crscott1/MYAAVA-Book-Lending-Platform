@@ -137,7 +137,7 @@ Before that, run sql file in MySQL. Make sure the database and table name are th
    - utils.page: Utility Package  
      A helper package commonly used for handling pagination (e.g., for displaying paginated lists in admin panels or user interfaces).
           
-2. Work Flow
+2. Work Flow        
    We use the typical three-layers structure in Spring Boot: Controller → Service → Mapper → DB
    ```
       [Front-end Web Page / Postman]
