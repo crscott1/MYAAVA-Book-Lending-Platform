@@ -128,7 +128,7 @@ Before that, run sql file in MySQL. Make sure the database and table name are th
    - service: Business Logic Layer  
      Core business logic, such as borrowing and returning books, user login checks, etc.    
      Includes multiple IXXXService interfaces: Encapsulate business logic for each module. Define key methods like addBook(Book book) or login(Admin admin).   
-     - impl Subpackage: This is what you need to write code here.  
+     - impl Subpackage: This is the moudle that you need to write code.  
       Contains concrete implementations of the service interfaces, such as:   
       AdminServiceImpl implements IAdminService   
       BookServiceImpl implements IBookService   
