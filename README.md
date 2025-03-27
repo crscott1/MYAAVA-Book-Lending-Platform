@@ -158,6 +158,7 @@ Before that, run sql file in MySQL. Make sure the database and table name are th
           🗄️ Database（MySQL）
    (Return Results → Retrun to each Layer)
    ```
+   
    ```
    UserController.adminLogin()
       ↓ call
@@ -170,7 +171,5 @@ Before that, run sql file in MySQL. Make sure the database and table name are th
    MyBatis generate SQL , execute query on admin table
       ↓
    Return Admin → Controller → View
- ```
-   
-
+   ```
    
