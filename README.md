@@ -158,6 +158,19 @@ Before that, run sql file in MySQL. Make sure the database and table name are th
           🗄️ Database（MySQL）
    (Return Results → Retrun to each Layer)
    ```
+   ```
+   UserController.adminLogin()
+      ↓ call
+   IAdminService.adminLogin()
+      ↓ call
+   AdminServiceImpl.adminLogin()
+      ↓ call
+   AdminMapper.selectByExample()
+      ↓
+   MyBatis generate SQL , execute query on admin table
+      ↓
+   Return Admin → Controller → View
+ ```
 
    
 
