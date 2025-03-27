@@ -171,7 +171,6 @@ Before that, run sql file in MySQL. Make sure the database and table name are th
       ↓
    Return Admin → Controller → View
  ```
-
    
 
    
