@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrator-Community Book Lending System</title>
+    <link href="/layui/css/layui.css" rel="stylesheet"/>
+
+</head>
+
+<div class="layui-layout layui-layout-admin">
+
+    <div th:include="common/admin_header :: header"></div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree">
+
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">Book Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/addBookPage">&emsp;&emsp;Add New Book</a></dd>
+                        <dd><a href="/addCategoryPage?pageNum=1">&emsp;&emsp;New Category</a></dd>
+                        <dd><a href="/showBooksPage">&emsp;&emsp;Search Books</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">User Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/showUsersPage?pageNum=1">&emsp;&emsp;Search User</a></dd>
+                        <dd><a href="/addUserPage">&emsp;&emsp;Add User</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">Search User</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/allBorrowBooksRecordPage?pageNum=1">&emsp;&emsp;All Records</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item  layui-nav-itemed"><a class="" href="/adminInfoPage">Personal Information</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body layui-container">
+
+        <hr class="layui-bg-blue">
+        <h3 style="font-size: xx-large; text-align: center"> Administrator Information </h3>
+        <hr class="layui-bg-blue">
+
+        <div class="layui-row">
+            <div class="layui-col-md8 layui-col-lg-offset2">
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>Administrator ID</th>
+                        <th>Administrator Name</th>
+                        <th>Administrator Email</th>
+                        <th>Administrator Password</th>
+                    </tr>
+                    </thead>
+
+                    <tr>
+                        <td><b th:text="${session.admin.getAdminId()}"></b></td>
+                        <td><b th:text="${session.admin.getAdminName()}"></b></td>
+                        <td><b th:text="${session.admin.getAdminEmail()}"></b></td>
+                        <td><b th:text="${session.admin.getAdminPwd()}"></b></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <button id="modify-admin" class="layui-btn" style="display: block; margin: 10px auto;">Modify information</button>
+        </div>
+
+        <div id="window" title="修改信息" style="margin: 5%; display: none">
+            <form id="updateAdminForm" class="layui-form">
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Name</label>
+
+                    <div class="layui-input-block">
+                        <input type="text" name="adminName" th:value="${session.admin.getAdminName()}" id="name"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Email</label>
+
+                    <div class="layui-input-block">
+                        <input type="text" name="adminEmail" th:value="${session.admin.getAdminEmail()}" id="email"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Password</label>
+
+                    <div class="layui-input-block">
+                        <input type="text" name="adminPwd" id="password" class="layui-input"
+                               th:value="${session.admin.getAdminPwd()}">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div th:include="common/footer :: footer"></div>
+
+</div>
+
+<script src="/scripts/jquery.min.js"></script>
+<script src="/layui/layui.js"></script>
+<script src="/scripts/admin/adminInfo.js"></script>
+
+
+</body>
+</html>
