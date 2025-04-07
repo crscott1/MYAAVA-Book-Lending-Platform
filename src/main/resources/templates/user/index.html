@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User-Community Book Lending System</title>
+    <link href="/layui/css/layui.css" rel="stylesheet"/>
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:include="common/user_header :: header"></div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree">
+
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">Borrow Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/userBorrowBookRecord">&emsp;&emsp;Borrowing Record</a></dd>
+                        <dd><a href="/borrowingPage">&emsp;&emsp;Borrowing Books</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">Book Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/userReturnBooksPage">&emsp;&emsp;Returning Books</a></dd>
+                        <dd><a href="/findBookPage">&emsp;&emsp;Search Books</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="/userMessagePage">Pesonal Information</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body layui-container">
+        <div class="layui-carousel layui-container" id="index" style="margin-top: 40px;">
+            <div carousel-item>
+                <div><img src="/images/lib1.jpg"/></div>
+                <div><img src="/images/lib2.jpg"/></div>
+                <div><img src="/images/lib3.jpg"/></div>
+                <div><img src="/images/lib4.jpg"/></div>
+                <div><img src="/images/lib5.jpg"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div th:include="common/footer :: footer"></div>
+
+</div>
+
+<script src="/scripts/jquery.min.js"></script>
+<script src="/layui/layui.js"></script>
+<script>
+
+    layui.use(['carousel', 'element'], function () {
+        let carousel = layui.carousel;
+        let element = layui.element;
+
+        carousel.render({
+            elem: '#index'
+            , width: '900' 
+            , height: '550px' 
+        });
+    });
+
+</script>
+
+</body>
+</html>

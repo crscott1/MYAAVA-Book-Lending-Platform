@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User-Community Book Lending System</title>
+    <link href="/layui/css/layui.css" rel="stylesheet"/>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+
+    <div th:include="common/user_header :: header"></div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree">
+
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">Borrow Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/userBorrowBookRecord">&emsp;&emsp;Borrowing Record</a></dd>
+                        <dd><a href="/borrowingPage">&emsp;&emsp;Borrowing Books</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">Book Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/userReturnBooksPage">&emsp;&emsp;Returning Books</a></dd>
+                        <dd class="layui-this"><a href="/findBookPage">&emsp;&emsp;Search Books</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="/userMessagePage">Personal Information</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body layui-container">
+
+        <div class="layui-row">
+            <div class="layui-col-md4">
+
+                <hr class="layui-bg-blue">
+                <h1 style="text-align:left">Search Books</h1>
+                <hr class="layui-bg-blue">
+
+                <form class="layui-form" action="/findBookByBookPartInfo" id="findBookByNameForm">
+
+                    <div class="layui-form-item">
+                        <input placeholder="Please enter the book name" class="layui-input" autofocus autocomplete="off" type="text"
+                               name="bookPartInfo" lay-verify="required">
+                    </div>
+
+                    <input class="layui-btn" type="submit" lay-submit="" value="Search">
+                </form>
+            </div>
+
+
+            <div class="layui-col-md7 layui-col-lg-offset1">
+
+                <hr class="layui-bg-blue">
+                <h1 style="text-align: left">Search Results</h1>
+                <hr class="layui-bg-blue">
+
+                <table class="layui-table ">
+                    <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+
+                    <tr th:each="book:${bookList}">
+                        <td><label th:text="${book.getBookId()}"></label></td>
+                        <td><label th:text="${book.getBookName()}"></label></td>
+                        <td><label th:text="${book.getBookAuthor()}"></label></td>
+                        <td><label th:text="${book.getBookPublish()}"></label></td>
+                        <td><label th:text="${book.getIsExist()}"></label></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div th:include="common/footer :: footer"></div>
+
+</div>
+
+
+<script src="/scripts/jquery.min.js"></script>
+<script src="/layui/layui.js"></script>
+
+<script>
+    layui.use(['form', 'element'], function () {
+        let form = layui.form;
+        let element = layui.element;
+    });
+</script>
+
+</body>
+</html>

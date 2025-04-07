@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User-Community Book Lending System</title>
+
+    <link href="/layui/css/layui.css" rel="stylesheet"/>
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:include="common/user_header :: header"></div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree">
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">Borrow Management</a>
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this"><a href="/userBorrowBookRecord">&emsp;&emsp;Borrowing Record</a></dd>
+                        <dd><a href="/borrowingPage">&emsp;&emsp;Borrowing Books</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">Book Management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/userReturnBooksPage">&emsp;&emsp;Return Books</a></dd>
+                        <dd><a href="/findBookPage">&emsp;&emsp;Search Books</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="/userMessagePage">Personal Information</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+
+        <div class="layui-container">
+            <hr class="layui-bg-blue">
+            <h3 style="text-align: center; font-size: xx-large">Borrowed Books</h3>
+            <hr class="layui-bg-blue">
+            <table class="layui-table ">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Name</th>
+                    <th>Borrowing date</th>
+                    <th>Return date</th>
+                </tr>
+                </thead>
+
+                <tr th:each="borrowingBooks : ${borrowingBooksList}">
+                    <td><label th:text="${borrowingBooks.getBook().getBookId()}"></label></td>
+                    <td><label id="bookName" th:title="${borrowingBooks.getBook().getBookAuthor()}" href="#"
+                               th:text="${borrowingBooks.getBook().getBookName()}">Title ...</label></td>
+                    <td><label th:text="${borrowingBooks.getDateOfBorrowing()}"></label></td>
+                    <td><label th:text="${borrowingBooks.getDateOfReturn()}"></label></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div th:include="common/footer :: footer"></div>
+
+</div>
+
+<script src="/scripts/jquery.min.js"></script>
+<script src="/layui/layui.js"></script>
+<script>
+    layui.use('element', function () {
+        let element = layui.element;
+    });
+</script>
+
+</body>
+</html>
