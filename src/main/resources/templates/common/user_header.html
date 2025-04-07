@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <footer th:fragment="header">
+        <div class="layui-header">
+            <div class=" layui-nav " style="font-size: x-large; color: #009688;line-height: 60px;"> Community Book Lending System</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="/images/user_image.jpg" class="layui-nav-img">
+                        <span th:text="${session.user.getUserName()}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">Basic profile</a></dd>
+                        <dd><a href="">Setting</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="/userLogOut">Log out</a></li>
+            </ul>
+        </div>
+
+    </footer>
+</head>
+</html>
