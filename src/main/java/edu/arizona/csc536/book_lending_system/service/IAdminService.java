@@ -23,5 +23,5 @@ public interface IAdminService {
     boolean addBookCategory(BookCategory bookCategory);
 
     // Add new Admin
-    boolean updateAdmin(Admin admin, HttpServletRequest request)
+    boolean updateAdmin(Admin admin, HttpServletRequest request);
 }
