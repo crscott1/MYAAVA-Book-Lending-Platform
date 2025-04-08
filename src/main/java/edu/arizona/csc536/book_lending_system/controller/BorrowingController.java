@@ -4,7 +4,7 @@ import edu.arizona.csc536.book_lending_system.domain.Vo.BorrowingBooksVo;
 import edu.arizona.csc536.book_lending_system.service.IBorrowingBooksRecordService;
 import edu.arizona.csc536.book_lending_system.utils.page.Page;
 
-import jakarta.annotation.Resource;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
