@@ -8,7 +8,11 @@ import edu.arizona.csc536.book_lending_system.service.IBookCategoryService;
 import edu.arizona.csc536.book_lending_system.service.IBookService;
 import edu.arizona.csc536.book_lending_system.utils.page.Page;
 
+//springboot 2
 import javax.annotation.Resource;
+
+// springboot 3:
+// import jakarta.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
