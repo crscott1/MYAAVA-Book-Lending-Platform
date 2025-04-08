@@ -6,8 +6,13 @@ import edu.arizona.csc536.book_lending_system.service.IBookService;
 import edu.arizona.csc536.book_lending_system.service.IBorrowingBooksRecordService;
 import edu.arizona.csc536.book_lending_system.service.IUserService;
 
+// springboot 2
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+// springboot 3
+// import jakarta.annotation.Resource;
+// import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
