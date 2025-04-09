@@ -56,7 +56,7 @@ Before running, make sure to install Mysql.
       ```
    - ceate the databse
      ```
-      CREATE DATABASE IF NOT EXISTS `book-lending-system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+      CREATE DATABASE IF NOT EXISTS `book_lending_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
      ```
      Then you can have a connection with your local MySQL server databse successfully.
      ![image](https://github.com/user-attachments/assets/2cfcfdba-6f6e-4189-9e82-da4ab815eddd)
