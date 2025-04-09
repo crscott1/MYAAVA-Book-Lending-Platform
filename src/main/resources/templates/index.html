@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -122,12 +122,20 @@
                 }
 
             } else {
-                layer.alert("Password cannot be empty", {icon: 5});
+                layer.alert("Password cannot be empty", {
+                    icon: 5,
+                    title: 'Information',
+                    btn: ['OK']
+                });
                 return false;
             }
         } else {
 
-            layer.alert("Username cannot be empty", {icon: 5});
+            layer.alert("Username cannot be empty",{
+                    icon: 5,
+                    title: 'Information',
+                    btn: ['OK']
+                });
             return false;
         }
     });
