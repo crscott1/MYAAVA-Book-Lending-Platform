@@ -3,8 +3,11 @@ package edu.arizona.csc536.book_lending_system.mapper;
 import edu.arizona.csc536.book_lending_system.domain.Admin;
 import edu.arizona.csc536.book_lending_system.domain.AdminExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface AdminMapper {
     long countByExample(AdminExample example);
 

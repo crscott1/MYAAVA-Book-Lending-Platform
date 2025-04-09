@@ -3,8 +3,11 @@ package edu.arizona.csc536.book_lending_system.mapper;
 import edu.arizona.csc536.book_lending_system.domain.Book;
 import edu.arizona.csc536.book_lending_system.domain.BookExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface BookMapper {
     long countByExample(BookExample example);
 
@@ -27,4 +30,10 @@ public interface BookMapper {
     int updateByPrimaryKeySelective(Book row);
 
     int updateByPrimaryKey(Book row);
+
+    List<Book> selectByCategoryId(@Param("categoryId") int categoryId, @Param("currIndex") int currIndex, @Param("pageSize") int PageSize);
+
+    int selectBookCountByCategoryId(@Param("categoryId") int categoryId);
+
+    List<Book> selectBooksByPartInfo(String bookPartInfo);
 }

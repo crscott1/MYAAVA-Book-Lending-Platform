@@ -5,10 +5,25 @@ import edu.arizona.csc536.book_lending_system.domain.Vo.BorrowingBooksVo;
 import edu.arizona.csc536.book_lending_system.service.IUserService;
 import edu.arizona.csc536.book_lending_system.utils.page.Page;
 import jakarta.servlet.http.HttpServletRequest;
+import edu.arizona.csc536.book_lending_system.mapper.*;
+import edu.arizona.csc536.book_lending_system.domain.*;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.text.SimpleDateFormat;
 
+@Service
 public class UserServiceImpl implements IUserService {
+    @Resource
+    private UserMapper userMapper;
+    @Resource
+    private BorrowingBooksMapper borrowingBooksMapper;
+    @Resource
+    private BookMapper bookMapper;
     @Override
     public List<User> findUserByUserName(String userName) {
 

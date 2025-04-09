@@ -2,9 +2,9 @@
 
 ## 0. Build Up
 ### Environment
-- jdk 1.8
+- jdk 17
 - mysql 8.0
-- maven 4.0.0
+- maven 4.0.0 / 3.9.9
 - SpringBoot 3.4.3
 
 ### Set Up

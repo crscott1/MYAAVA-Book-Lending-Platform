@@ -5,13 +5,28 @@ import edu.arizona.csc536.book_lending_system.domain.Book;
 import edu.arizona.csc536.book_lending_system.domain.BookCategory;
 import edu.arizona.csc536.book_lending_system.service.IAdminService;
 import jakarta.servlet.http.HttpServletRequest;
+import edu.arizona.csc536.book_lending_system.mapper.*;
+import edu.arizona.csc536.book_lending_system.domain.*;
+
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Implements the interface here
  */
+@Service
 public class AdminServiceImpl implements IAdminService {
+    @Resource
+    private AdminMapper adminMapper;
+
+    @Resource
+    private BookMapper bookMapper;
+
+    @Resource
+    private BookCategoryMapper bookCategoryMapper;
+
     @Override
     public boolean adminIsExist(String name) {
         AdminExample adminExample = new AdminExample();
