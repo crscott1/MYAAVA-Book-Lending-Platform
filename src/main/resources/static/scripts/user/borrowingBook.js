@@ -14,7 +14,11 @@ $(document).ready(function () {
         let bookId = $("#bookId").val().toString().trim();
 
         if (bookId === null || bookId === '' || isNaN(bookId)) {
-            layer.alert("请正确输入书籍编号");
+            // layer.alert("Please enter the correct book ID");
+            layer.alert("Please enter the correct book ID", {
+                title: 'Information',
+                btn: ['OK']
+            });
             return false;
         }
 
@@ -22,7 +26,7 @@ $(document).ready(function () {
     });
 });
 
-//借书
+//borrowing
 function borrowingBook(bookId) {
     $.ajax({
         async: false,
@@ -33,9 +37,9 @@ function borrowingBook(bookId) {
         success: function (data) {
             console.log(data.toString());
             if (data.toString() == "true") {
-                layer.msg('借 书 成 功!', {icon: 6, time: 2000});
+                layer.msg('Borrowing books successfully!', {icon: 6, time: 2000});
             } else {
-                layer.msg('借 书 失 败!', {icon: 7, time: 2000});
+                layer.msg('Book borrowing failed!', {icon: 7, time: 2000});
             }
         },
         error: function (data) {
