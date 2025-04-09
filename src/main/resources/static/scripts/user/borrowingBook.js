@@ -14,7 +14,7 @@ $(document).ready(function () {
         let bookId = $("#bookId").val().toString().trim();
 
         if (bookId === null || bookId === '' || isNaN(bookId)) {
-            // layer.alert("Please enter the correct book ID");
+            // layer.alert("Please enter the correct book ID"); // need update
             layer.alert("Please enter the correct book ID", {
                 title: 'Information',
                 btn: ['OK']
