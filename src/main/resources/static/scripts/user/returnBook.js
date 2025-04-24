@@ -4,46 +4,40 @@ layui.use(['form', 'element','layer'], function () {
     let layer = layui.layer;
 });
 
-layui.use(['form', 'layer'], function () {
-    let form = layui.form;
-    let layer = layui.layer;
-});
-
 $(document).ready(function () {
     $("#btn1").click(function () {
         let bookId = $("#bookId").val().toString().trim();
 
         if (bookId === null || bookId === '' || isNaN(bookId)) {
-            // layer.alert("Please enter the correct book ID");
-            layer.alert("Please enter the correct book ID", {
-                title: 'Information',
-                btn: ['OK']
-            });
+            layer.alert("Please enter the correct book ID");
             return false;
         }
 
-        borrowingBook(bookId);
+        returnBook(bookId);
+
     });
 });
 
-//borrowing
-function borrowingBook(bookId) {
+function returnBook(bookId) {
     $.ajax({
         async: false,
         type: "post",
-        url: "/userBorrowingBook",
+        url: "/userReturnBook",
         dataType: "json",
         data: {bookId: bookId},
         success: function (data) {
-            console.log(data.toString());
+
             if (data.toString() == "true") {
-                layer.msg('Borrowing books successfully!', {icon: 6, time: 2000});
+                layer.msg('Book returned successfully!', {icon: 6, time: 2000});
+                $("#bookId").val('');
             } else {
-                layer.msg('Book borrowing failed!', {icon: 7, time: 2000});
+                layer.msg('Return of book failed!', {icon: 7, time: 2000});
+                $("#bookId").val('');
             }
+
         },
         error: function (data) {
-            layer.alert(data.result);
+            alert(data.result);
         }
     });
 };

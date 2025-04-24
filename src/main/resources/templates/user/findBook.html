@@ -2,27 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User-Community Book Lending System</title>
+    <title>User - Community Book Lending System</title>
     <link href="/layui/css/layui.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="/css/custom-style.css" rel="stylesheet"/>
+    <style>
+        .find-book-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .find-book-card h2 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .find-book-card form {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .find-book-card .layui-form-item {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .find-book-card .layui-input {
+            width: 300px;
+        }
+        .find-book-card .layui-btn {
+            background-color: #6C63FF;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        .find-book-card table {
+            width: 100%;
+        }
+        .find-book-card thead th {
+            background-color: #f3e8ff;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 
 <div class="layui-layout layui-layout-admin">
-
-    <div th:include="common/user_header :: header"></div>
+    <div th:include="common/user_header :: header" class="user-header"></div>
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree">
-
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item">
                     <a class="" href="javascript:;">Borrow Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/userBorrowBookRecord">&emsp;&emsp;Borrowing Record</a></dd>
                         <dd><a href="/borrowingPage">&emsp;&emsp;Borrowing Books</a></dd>
                     </dl>
                 </li>
-
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">Book Management</a>
                     <dl class="layui-nav-child">
@@ -35,66 +75,46 @@
         </div>
     </div>
 
-    <div class="layui-body layui-container">
+    <div class="layui-body user-index-body">
+        <div class="find-book-card">
+            <h2>Search Books</h2>
+            <form class="layui-form" action="/findBookByBookPartInfo" id="findBookByNameForm">
+                <div class="layui-form-item">
+                    <input placeholder="Please enter the book name" class="layui-input" autofocus autocomplete="off" type="text"
+                           name="bookPartInfo">
+                </div>
+                <button class="layui-btn" type="submit" lay-submit="">Search</button>
+            </form>
 
-        <div class="layui-row">
-            <div class="layui-col-md4">
-
-                <hr class="layui-bg-blue">
-                <h1 style="text-align:left">Search Books</h1>
-                <hr class="layui-bg-blue">
-
-                <form class="layui-form" action="/findBookByBookPartInfo" id="findBookByNameForm">
-
-                    <div class="layui-form-item">
-                        <input placeholder="Please enter the book name" class="layui-input" autofocus autocomplete="off" type="text"
-                               name="bookPartInfo" lay-verify="required">
-                    </div>
-
-                    <input class="layui-btn" type="submit" lay-submit="" value="Search">
-                </form>
-            </div>
-
-
-            <div class="layui-col-md7 layui-col-lg-offset1">
-
-                <hr class="layui-bg-blue">
-                <h1 style="text-align: left">Search Results</h1>
-                <hr class="layui-bg-blue">
-
-                <table class="layui-table ">
-                    <thead>
-                    <tr>
-                        <th>Book ID</th>
-                        <th>Name</th>
-                        <th>Author</th>
-                        <th>Publisher</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-
-                    <tr th:each="book:${bookList}">
-                        <td><label th:text="${book.getBookId()}"></label></td>
-                        <td><label th:text="${book.getBookName()}"></label></td>
-                        <td><label th:text="${book.getBookAuthor()}"></label></td>
-                        <td><label th:text="${book.getBookPublish()}"></label></td>
-                        <td><label th:text="${book.getIsExist()}"></label></td>
-                    </tr>
-                </table>
-            </div>
+            <h2>Search Results</h2>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book:${bookList}">
+                    <td><label th:text="${book.getBookId()}"></label></td>
+                    <td><label th:text="${book.getBookName()}"></label></td>
+                    <td><label th:text="${book.getBookAuthor()}"></label></td>
+                    <td><label th:text="${book.getBookPublish()}"></label></td>
+                    <td><label th:text="${book.getIsExist()}"></label></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
-
     </div>
 
     <div th:include="common/footer :: footer"></div>
-
 </div>
-
 
 <script src="/scripts/jquery.min.js"></script>
 <script src="/layui/layui.js"></script>
-
 <script>
     layui.use(['form', 'element'], function () {
         let form = layui.form;

@@ -2,10 +2,13 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Administrator-Community Book Lending System</title>
+    <title>Administrator - Community Book Lending System</title>
     <link href="/layui/css/layui.css" rel="stylesheet"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="/css/custom-style.css" rel="stylesheet"/>
 </head>
+
+<body>
 <div class="layui-layout layui-layout-admin">
 
     <div th:include="common/admin_header :: header"></div>
@@ -13,92 +16,107 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree">
-
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">Book Management</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">Book Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/addBookPage">&emsp;&emsp;Add New Book</a></dd>
                         <dd><a href="/addCategoryPage?pageNum=1">&emsp;&emsp;New Category</a></dd>
                         <dd><a href="/showBooksPage">&emsp;&emsp;Search Books</a></dd>
                     </dl>
                 </li>
-
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">User Management</a>
+                    <a href="javascript:;">User Management</a>
                     <dl class="layui-nav-child">
                         <dd class="layui-this"><a href="/showUsersPage?pageNum=1">&emsp;&emsp;Search User</a></dd>
                         <dd><a href="/addUserPage">&emsp;&emsp;Add User</a></dd>
                     </dl>
                 </li>
-
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">Borrowing Record</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">Borrowing Record</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/allBorrowBooksRecordPage?pageNum=1">&emsp;&emsp;All Records</a></dd>
                     </dl>
                 </li>
-
                 <li class="layui-nav-item"><a href="/adminInfoPage">Personal Information</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="layui-body layui-container">
+    <div class="layui-body search-book-body">
+        <div class="search-book-flex">
 
-        <hr class="layui-bg-blue">
-        <h2 style="text-align:center">Search User</h2>
-        <hr class="layui-bg-blue">
-
-        <table class="layui-table" lay-size="sm">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>User Name</th>
-                <th>Email</th>
-                <th>Operation</th>
-            </tr>
-            </thead>
-            <tr th:each="user:${page.getList()}">
-                <td><label th:text="${user.getUserId()}"></label></td>
-                <td><label th:text="${user.getUserName()}"></label></td>
-                <td><label th:text="${user.getUserEmail()}"></label></td>
-                <td>
-                    <button class="layui-btn layui-btn-sm layui-btn-danger del_btn" th:value="${user.getUserId()}">Delete
-                    </button>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="5">
-                    <div style="margin: auto; width: 160px;">
-
-                        <a id="prePage"
-                           th:href="@{/showUsersPage(pageNum=${page.getPageNum()-1})}">
-                            <button class="layui-btn layui-btn-sm">Last</button>
-                        </a>
-                        <label id="lab1" th:text="${page.getPageNum()}"></label>
-
-                        <span>/</span>
-
-                        <label id="lab2" th:text="${page.getPageCount()}"></label>
-                        <a id="nextPage" th:href="@{/showUsersPage(pageNum=${page.getPageNum()+1})}">
-                            <button class="layui-btn layui-btn-sm">Next</button>
-                        </a>
+            <!-- 🔍 搜索用户卡片 -->
+            <div class="search-card">
+                <h2 class="add-book-title">Search User</h2>
+                <form class="layui-form" th:action="@{/showUsersPage}" method="get">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">User ID</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="userId" th:value="${userId}" placeholder="Enter user ID" class="layui-input"/>
+                        </div>
                     </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">User Name</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="userName" th:value="${userName}" placeholder="Enter user name" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="form-submit-container">
+                        <input class="layui-btn" type="submit" lay-submit="" value="Search">
+                    </div>
+                </form>
+            </div>
 
-                </td>
-            </tr>
-
-        </table>
-
+            <!-- 📋 搜索结果卡片 -->
+            <div class="result-card">
+                <h2 class="add-book-title">User List</h2>
+                <table class="layui-table layui-form">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Operation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${page.getList()}">
+                        <td th:text="${user.getUserId()}"></td>
+                        <td th:text="${user.getUserName()}"></td>
+                        <td th:text="${user.getUserEmail()}"></td>
+                        <td>
+                            <button class="layui-btn layui-btn-sm layui-btn-danger del_btn"
+                                    th:value="${user.getUserId()}">Delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div class="pagination-wrapper">
+                                <a th:href="@{/showUsersPage(pageNum=${page.getPageNum()-1}, userId=${userId}, userName=${userName})}">
+                                    <button class="layui-btn layui-btn-sm">Last</button>
+                                </a>
+                                <span th:text="${page.getPageNum()}"></span>
+                                <span>/</span>
+                                <span th:text="${page.getPageCount()}"></span>
+                                <a th:href="@{/showUsersPage(pageNum=${page.getPageNum()+1}, userId=${userId}, userName=${userName})}">
+                                    <button class="layui-btn layui-btn-sm">Next</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
     </div>
-    <div th:include="common/footer :: footer"></div>
 
+    <div th:include="common/footer :: footer"></div>
 </div>
 
 <script src="/scripts/jquery.min.js"></script>
 <script src="/layui/layui.js"></script>
 <script src="/scripts/admin/showUsers.js"></script>
-
 </body>
 </html>

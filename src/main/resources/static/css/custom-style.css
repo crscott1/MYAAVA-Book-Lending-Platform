@@ -1,0 +1,862 @@
+/* 页面整体背景与字体 */
+/* 全站统一字体为 Nunito 可爱圆润风格 */
+body, button, input, select, textarea {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+
+/* 侧边栏背景 & 字体 */
+.layui-side {
+    background-color: #ffffff !important;
+    border-right: 1px solid #e5e7eb;
+}
+
+.layui-nav {
+    background-color: transparent;
+}
+
+.layui-nav-item > a {
+    color: #111827 !important;
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+.layui-nav-child a {
+    color: #374151 !important;
+    padding-left: 40px;
+    font-size: 15px;
+}
+
+/* 鼠标 hover 效果 */
+.layui-nav-item:hover > a,
+.layui-nav-child dd:hover > a {
+    background-color: #f3f4f6 !important;
+    color: #2563eb !important;
+}
+
+/* 主体内容容器 */
+.layui-body {
+    background-color: #f9fafb;
+    padding: 30px;
+}
+
+/* 轮播图容器 */
+.layui-carousel {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.layui-carousel img {
+    object-fit: cover;
+    width: 100%;
+    height: 550px;
+}
+
+/* 顶部导航栏样式调整 */
+.layui-layout-admin .layui-header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 标题字体 */
+.layui-layout-admin .layui-header .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2937; /* 深灰色 */
+    padding-left: 20px;
+    line-height: 60px;
+}
+
+/* 右上角 admin / logout 区域 */
+.layui-layout-admin .layui-header .layui-nav {
+    background: none;
+}
+
+.layui-layout-admin .layui-header .layui-nav .layui-nav-item a {
+    color: #374151 !important; /* 深灰 */
+    font-size: 15px;
+}
+
+.layui-layout-admin .layui-header .layui-nav .layui-nav-item a:hover {
+    color: #2563eb !important; /* 蓝色高亮 */
+}
+
+/* Footer 整体容器样式 */
+.footer-wrapper {
+    background-color: #ffffff !important;
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 24px;
+    font-size: 14px;
+    color: #6b7280; /* 深灰文字 */
+    overflow: hidden;
+}
+
+/* 左右布局 */
+.footer-left {
+    float: left;
+}
+
+.footer-right {
+    float: right;
+}
+
+/* 移动端兼容（可选） */
+@media (max-width: 768px) {
+    .footer-left, .footer-right {
+        float: none;
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
+
+/* 全局字体圆润风 */
+body, input, textarea, select, button {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* 输入框统一风格 */
+.layui-input, .layui-textarea, .layui-select {
+    border-radius: 8px !important;
+    border: 1px solid #d1d5db !important;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* 输入框聚焦状态 */
+.layui-input:focus, .layui-textarea:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* 按钮风格 */
+.layui-btn {
+    border-radius: 8px;
+    background-color: #6366f1;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.layui-btn:hover {
+    background-color: #4338ca;
+}
+
+/* 表单外卡片盒子 */
+.add-book-container {
+    width: 480px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    padding: 32px;
+}
+
+
+/* 标题居中可爱字体 */
+.add-book-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+
+/* 💡 表单整体容器居中，让 add-book-container 居中对齐页面 */
+.add-book-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* 留出头部导航高度 */
+    background-color: #f9fafb;
+}
+
+
+/* 让容器居中，不受 layui-container 的 max-width 限制影响 */
+.add-book-body.layui-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.centered-form {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* 页面布局容器 */
+.add-category-body {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.add-category-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* 左侧表单卡片 */
+.category-form-panel {
+    width: 400px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* 表格部分 */
+.category-table-panel {
+    flex: 1;
+}
+
+.pagination-wrapper {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-submit-container {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* 外部整体居中卡片拼接布局 */
+.add-category-flex {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    align-items: flex-start;
+    padding-top: 40px;
+    flex-wrap: wrap; /* ✅ 兼容小屏自动换行 */
+}
+
+/* 主区域卡片（表单 + 表格） */
+.main-card {
+    width: 720px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* 右侧卡片样式 */
+.side-card {
+    width: 280px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.side-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+
+.add-category-body {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.add-category-flex {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* 左侧主区域 */
+.main-card {
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* ✅ 表单和表格使用同样的宽度 */
+.category-form-panel,
+.category-table-panel {
+    width: 720px;               /* ✅ 设置统一宽度 */
+    margin: 0 auto;             /* ✅ 居中显示 */
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;     /* ✅ 确保 padding 不影响宽度 */
+}
+
+
+/* 右侧功能区卡片 */
+.side-card {
+    width: 280px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.side-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* 分页按钮居中 */
+.pagination-wrapper {
+    margin-top: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 表单按钮居中 */
+.form-submit-container {
+    margin-top: 1px;
+    text-align: center;
+}
+
+#addBookCategoryForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* ✅ 内容居中对齐 */
+    gap: 16px;
+}
+
+#addBookCategoryForm .layui-form-item {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* ✅ 居中 label + input */
+    gap: 12px;
+}
+
+.search-book-body {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.search-book-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+}
+
+/* 卡片样式统一 */
+.search-card,
+.result-card {
+    width: 720px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+
+/* 表单提交按钮居中 */
+.form-submit-container {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* 分页按钮居中 */
+.pagination-wrapper {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 表单每一行居中对齐 */
+.search-card .layui-form-item {
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* label 美化并保持适度宽度 */
+.search-card .layui-form-label {
+    width: auto;
+    min-width: 100px;
+    text-align: right;
+    color: #374151;
+    font-weight: 600;
+    padding: 0;
+    line-height: 38px;
+}
+
+/* 输入框容器调整 */
+.search-card .layui-input-inline {
+    width: 220px;
+}
+
+/* Select 样式 */
+.search-card select.layui-select {
+    width: 100%;
+}
+
+/* 整体布局容器 */
+.search-book-body {
+    background-color: #f9fafb;
+    padding: 40px 20px;
+    min-height: calc(100vh - 60px);
+    font-family: 'Nunito', sans-serif;
+}
+
+/* 上下卡片排列容器 */
+.search-book-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* 标题卡片 */
+.search-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.search-card .add-book-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* 结果卡片 */
+.result-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* 表格样式 */
+.result-card table.layui-table {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+.result-card th {
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+}
+
+/* 分页居中 */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* 删除按钮统一圆角 */
+.result-card .layui-btn-danger {
+    background-color: #6366f1;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    padding: 4px 16px;
+}
+
+.result-card .layui-btn-danger:hover {
+    background-color: #4f46e5;
+}
+
+.search-book-body {
+    background-color: #f9fafb;
+    min-height: 100vh;
+    padding: 32px 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.search-book-flex {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.search-card, .result-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.add-book-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.form-submit-container {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+
+/* 🌟 Add User 页面专属样式 */
+.add-user-container {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    padding: 32px;
+    margin: 30px auto;
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-user-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.add-user-form-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.add-user-form-label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.add-user-input-wrapper {
+    width: 100%;
+}
+
+.add-user-input-wrapper input {
+    width: 100%;
+}
+
+.form-submit-container {
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* 📘 借阅记录卡片样式 */
+.record-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 960px;
+    margin: 40px auto;
+}
+
+/* 统一标题样式 */
+.page-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 24px;
+}
+
+.pagination-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-wrapper button {
+    background-color: #6C63FF;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin: 0 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pagination-wrapper button.layui-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 📋 管理员信息页面整体卡片样式 */
+.admin-info-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 960px;
+    margin: 40px auto;
+}
+
+/* 🧑‍💼 页面标题样式 */
+.page-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 24px;
+}
+
+/* 📌 按钮居中 */
+.pagination-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-wrapper .layui-btn {
+    background-color: #6C63FF;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 18px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* 🪟 修改弹窗表单样式 */
+.admin-edit-window .layui-form-item {
+    margin-bottom: 20px;
+}
+
+.admin-edit-window .layui-form-label {
+    font-weight: 600;
+    font-size: 14px;
+    width: 100px;
+}
+
+.admin-edit-window .layui-input-block {
+    margin-left: 120px;
+    max-width: 400px;
+}
+
+.user-index-body {
+    background-color: #f8f9fb;
+    padding: 40px 20px;
+}
+
+/* 🧾 圆角轮播卡片样式 */
+.carousel-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* 图片展示样式 */
+.carousel-image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* 🟦 Header 背景色和文字色统一 */
+.layui-header {
+    background-color: #6C63FF !important; /* 修改为你希望的主题色 */
+    color: white;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* 👤 用户头像旁边名字文字颜色 */
+.layui-header .layui-nav .layui-nav-item a,
+.layui-header .layui-nav .layui-nav-child dd a {
+    color: #f0f0f0 !important; /* 子元素文字颜色 */
+}
+
+/* 🔁 下拉菜单 hover 背景色 */
+.layui-header .layui-nav-child dd a:hover {
+    background-color: #837CFF !important;
+    color: white !important;
+}
+
+/* ✅ nav-item hover 效果统一 */
+.layui-header .layui-nav .layui-nav-item:hover > a {
+    background-color: #5a52e8 !important;
+}
+
+.borrow-page-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 460px;
+    margin: 40px auto;
+    text-align: center;
+}
+.borrow-page-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+.borrow-input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.borrow-btn {
+    width: 100%;
+    background-color: #6C63FF;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+
+/* 🎯 还书页卡片 */
+.return-page-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 460px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* 🎯 标题样式 */
+.return-page-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+/* 🎯 输入框 */
+.return-input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 🎯 按钮样式 */
+.return-btn {
+    width: 100%;
+    background-color: #6C63FF;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.return-btn:hover {
+    background-color: #5b54d8;
+}
+
+.find-book-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 800px;
+    margin: 40px auto;
+}
+.find-book-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.find-book-card form {
+    margin-bottom: 32px;
+    text-align: center;
+}
+.find-book-card .layui-form-item {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+.find-book-card .layui-input {
+    width: 300px;
+}
+.find-book-card .layui-btn {
+    background-color: #6C63FF;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+.find-book-card table {
+    width: 100%;
+}
+.find-book-card thead th {
+    background-color: #f3e8ff;
+}
+
+.user-info-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    max-width: 960px;
+    margin: 40px auto;
+}
+.user-info-card h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.user-info-card table {
+    width: 100%;
+}
+.user-info-card thead th {
+    background-color: #f3e8ff;
+}
+.user-info-card .layui-btn {
+    display: block;
+    margin: 20px auto 0;
+    background-color: #6C63FF;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+#window {
+    max-width: 500px;
+    margin: 40px auto;
+}
+

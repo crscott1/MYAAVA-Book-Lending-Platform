@@ -22,6 +22,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * AdminController contains interface to administrator. It receives
  * administrator's HTTP request and calls service layer
@@ -104,12 +107,51 @@ public class AdminController {
     /**
      * Return the user list page (paginated)
      */
+//    @RequestMapping("/showUsersPage")
+//    public String showUsersPage(Model model, @RequestParam("pageNum") int pageNum) {
+//        Page<User> page = userService.findUserByPage(pageNum);
+//        model.addAttribute("page", page);
+//        return "admin/showUsers";
+//    }
     @RequestMapping("/showUsersPage")
-    public String showUsersPage(Model model, @RequestParam("pageNum") int pageNum) {
-        Page<User> page = userService.findUserByPage(pageNum);
+    public String showUsersPage(
+            Model model,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "userId", required = false) Integer userId,
+            @RequestParam(value = "userName", required = false) String userName) {
+
+        Page<User> page;
+
+        if (userId != null) {
+            // 按 ID 查询（返回单条结果）
+            User user = userService.findUserById(userId);
+            List<User> result = (user != null) ? List.of(user) : new ArrayList<>();
+            page = new Page<>(); // 自定义包装页数据
+            page.setList(result);
+            page.setPageCount(1);
+            page.setPageNum(pageNum);
+
+        } else if (userName != null && !userName.trim().isEmpty()) {
+            // 按名称查询（可能多条）
+            List<User> result = userService.findUserByUserName(userName);
+            page = new Page<>(); // 自定义包装页数据
+            page.setList(result);
+            page.setPageCount(1);
+            page.setPageNum(pageNum);
+
+        } else {
+            // 默认分页（你自己已有的分页方法）
+            page = userService.findUserByPage(pageNum);
+        }
+
         model.addAttribute("page", page);
+        model.addAttribute("userId", userId);
+        model.addAttribute("userName", userName);
+
         return "admin/showUsers";
     }
+
+
 
     /**
      * Return the book list page (initial empty view)

@@ -1,26 +1,26 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <footer th:fragment="header">
-        <div class="layui-header">
-            <div class=" layui-nav " style="font-size: x-large; color: #3bf172;line-height: 60px;"> Community Book Lending System</div>
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="/images/user_image.jpg" class="layui-nav-img">
-                        <span th:text="${session.admin.getAdminName()}"></span>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">Basic profile</a></dd>
-                        <dd><a href="">Setting</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="/adminLogOut">Log out</a></li>
-            </ul>
-        </div>
-    </footer>
-</head>
-</html>
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <footer th:fragment="header">-->
+<!--        <div class="layui-header">-->
+<!--            <div class=" layui-nav " style="font-size: x-large; color: #3bf172;line-height: 60px;"> Community Book Lending System</div>-->
+<!--            <ul class="layui-nav layui-layout-right">-->
+<!--                <li class="layui-nav-item">-->
+<!--                    <a href="javascript:;">-->
+<!--                        <img src="/images/user_image.jpg" class="layui-nav-img">-->
+<!--                        <span th:text="${session.admin.getAdminName()}"></span>-->
+<!--                    </a>-->
+<!--                    <dl class="layui-nav-child">-->
+<!--                        <dd><a href="">Basic profile</a></dd>-->
+<!--                        <dd><a href="">Setting</a></dd>-->
+<!--                    </dl>-->
+<!--                </li>-->
+<!--                <li class="layui-nav-item"><a href="/adminLogOut">Log out</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </footer>-->
+<!--</head>-->
+<!--</html>-->
 
 <!-- 
 <!DOCTYPE HTML> 
@@ -48,4 +48,32 @@
     </footer>
 </head>
 </html> -->
+
+
+<!-- templates/common/admin_header.html -->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+    <div class="layui-header">
+        <div class="header-wrapper">
+            <div class="title">Community Book Lending System</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="/images/user_image.jpg" class="layui-nav-img">
+                        <span th:text="${session.admin.getAdminName()}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#">Basic profile</a></dd>
+                        <dd><a href="#">Setting</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="/adminLogOut">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
 

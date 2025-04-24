@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-EN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Administrator-Community Book Lending System</title>
+    <title>Administrator - Community Book Lending System</title>
     <link href="/layui/css/layui.css" rel="stylesheet"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="/css/custom-style.css" rel="stylesheet"/>
 </head>
+
+<body>
 <div class="layui-layout layui-layout-admin">
 
     <div th:include="common/admin_header :: header"></div>
@@ -13,9 +16,8 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree">
-
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">Book Management</a>
+                    <a href="javascript:;">Book Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/addBookPage">&emsp;&emsp;Add New Book</a></dd>
                         <dd class="layui-this"><a href="/addCategoryPage?pageNum=1">&emsp;&emsp;New Category</a></dd>
@@ -23,16 +25,16 @@
                     </dl>
                 </li>
 
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">User Management</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">User Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/showUsersPage?pageNum=1">&emsp;&emsp;Search User</a></dd>
                         <dd><a href="/addUserPage">&emsp;&emsp;Add User</a></dd>
                     </dl>
                 </li>
 
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">Borrowing Record</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">Borrowing Record</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/allBorrowBooksRecordPage?pageNum=1">&emsp;&emsp;All Records</a></dd>
                     </dl>
@@ -43,96 +45,88 @@
         </div>
     </div>
 
-    <div class="layui-body layui-container">
+    <div class="layui-body add-category-body">
+        <div class="add-category-flex">
 
-        <div class="layui-row">
+            <!-- ✅ 主内容卡片区域 -->
+            <div class="main-card">
 
-            <div class="layui-col-md4"><!--left half-->
-
-                <hr class="layui-bg-blue">
-                <h2 style="text-align:center">Create New Category</h2>
-                <hr class="layui-bg-blue">
-
-                <form class="layui-form" id="addBookCategoryForm">
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">Category</label>
-                        <input class="layui-input-inline layui-input" id="categoryName" autocomplete="off"
-                               placeholder="Please enter category" type="text" name="categoryName" lay-verify="required">
-                    </div>
-
-                    <input name="pageNum" value="1" style="display: none">
-
-                    <div style="margin-left: 100px">
-                        <input lay-filter="btn_addBookCategory" lay-submit="" id="btn_addBookCategory" type="submit"
-                               class="layui-btn " value="Add Category">
-                    </div>
-                </form>
-
-            </div>
-
-            <div class="layui-col-md6 layui-col-md-offset2 "><!--right half-->
-                <hr class="layui-bg-blue">
-                <h2 style="text-align:center">Existing Categories</h2>
-                <hr class="layui-bg-blue">
-
-                <table class="layui-table" lay-size="sm">
-                    <thead>
-                    <tr>
-                        <th>Category ID</th>
-                        <th>Category Name</th>
-                        <th>Operation</th>
-                    </tr>
-                    </thead>
-
-                    <tr th:each="bookCategory:${page.getList()}">
-                        <td><label th:text="${bookCategory.getCategoryId()}"></label></td>
-                        <td><label th:text="${bookCategory.getCategoryName()}"></label></td>
-                        <td>
-                            <button class="layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory"
-                                    th:value="${bookCategory.getCategoryId()}">Delete
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="3">
-                            <div style="margin: auto; width: 160px;">
-
-                                <a id="prePage" href="/addCategoryPage?pageNum=1"
-                                   th:href="@{/addCategoryPage(pageNum=${page.getPageNum()-1})}">
-                                    <button class="layui-btn layui-btn-sm">Last</button>
-                                </a>
-                                <label id="lab1" th:text="${page.getPageNum()}"></label>
-
-                                <span>/</span>
-
-                                <label id="lab2" th:text="${page.getPageCount()}"></label>
-                                <a id="nextPage" href="/addCategoryPage?pageNum=2"
-                                   th:href="@{/addCategoryPage(pageNum=${page.getPageNum()+1})}">
-                                    <button class="layui-btn layui-btn-sm">Next</button>
-                                </a>
+                <div class="category-form-panel">
+                    <h2 class="add-book-title">Create New Category</h2>
+                    <form class="layui-form" id="addBookCategoryForm">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Category</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" id="categoryName" name="categoryName"
+                                       placeholder="Please enter category"
+                                       type="text" lay-verify="required" autocomplete="off">
                             </div>
+                        </div>
+                        <input name="pageNum" value="1" style="display: none">
+                        <div class="form-submit-container">
+                            <input lay-filter="btn_addBookCategory" lay-submit="" id="btn_addBookCategory" type="submit"
+                                   class="layui-btn" value="Add Category">
+                        </div>
+                    </form>
+                </div>
 
-                        </td>
-                    </tr>
-                </table>
-                <br>
-
-
+                <div class="category-table-panel">
+                    <h2 class="add-book-title">Existing Categories</h2>
+                    <table class="layui-table layui-form">
+                        <thead>
+                        <tr>
+                            <th>Category ID</th>
+                            <th>Category Name</th>
+                            <th>Operation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="bookCategory:${page.getList()}">
+                            <td th:text="${bookCategory.getCategoryId()}"></td>
+                            <td th:text="${bookCategory.getCategoryName()}"></td>
+                            <td>
+                                <button class="layui-btn layui-btn-sm layui-btn-danger btn_deleteCategory"
+                                        th:value="${bookCategory.getCategoryId()}">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <div class="pagination-wrapper">
+                                    <a th:href="@{/addCategoryPage(pageNum=${page.getPageNum()-1})}">
+                                        <button class="layui-btn layui-btn-sm">Last</button>
+                                    </a>
+                                    <span th:text="${page.getPageNum()}"></span>
+                                    <span>/</span>
+                                    <span th:text="${page.getPageCount()}"></span>
+                                    <a th:href="@{/addCategoryPage(pageNum=${page.getPageNum()+1})}">
+                                        <button class="layui-btn layui-btn-sm">Next</button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
+
+<!--            &lt;!&ndash; ✅ 右侧辅助功能卡片 &ndash;&gt;-->
+<!--            <div class="side-card">-->
+<!--                <h3 class="side-title">Category Tools</h3>-->
+<!--                <p>You can manage or batch edit categories here in the future.</p>-->
+<!--                <button class="layui-btn layui-btn-normal">Export List</button>-->
+<!--                <button class="layui-btn layui-btn-warm">Backup</button>-->
+<!--            </div>-->
 
         </div>
-
     </div>
-    <div th:include="common/footer :: footer"></div>
 
+    <div th:include="common/footer :: footer"></div>
 </div>
 
 <script src="/scripts/jquery.min.js"></script>
 <script src="/layui/layui.js"></script>
 <script src="/scripts/admin/addBookCategory.js"></script>
-
 </body>
 </html>
-

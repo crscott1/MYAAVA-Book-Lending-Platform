@@ -2,10 +2,12 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Administrator-Community Book Lending System</title>
+    <title>Administrator - Community Book Lending System</title>
     <link href="/layui/css/layui.css" rel="stylesheet"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="/css/custom-style.css" rel="stylesheet"/>
 </head>
+<body>
 <div class="layui-layout layui-layout-admin">
 
     <div th:include="common/admin_header :: header"></div>
@@ -13,79 +15,74 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree">
-
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">Book Management</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">Book Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/addBookPage">&emsp;&emsp;Add New Book</a></dd>
                         <dd><a href="/addCategoryPage?pageNum=1">&emsp;&emsp;New Category</a></dd>
                         <dd><a href="/showBooksPage">&emsp;&emsp;Search Books</a></dd>
                     </dl>
                 </li>
-
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">User Management</a>
+                    <a href="javascript:;">User Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/showUsersPage?pageNum=1">&emsp;&emsp;Search User</a></dd>
                         <dd class="layui-this"><a href="/addUserPage">&emsp;&emsp;Add User</a></dd>
                     </dl>
                 </li>
-
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">Borrowing Record</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">Borrowing Record</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/allBorrowBooksRecordPage?pageNum=1">&emsp;&emsp;All Records</a></dd>
                     </dl>
                 </li>
-
                 <li class="layui-nav-item"><a href="/adminInfoPage">Personal Information</a></li>
             </ul>
         </div>
     </div>
 
-    <div style="margin : 30px auto; padding:40px 16px ;border: 200px; width: 400px; height: 550px; background-color: #f2f2f2"
-         class="layui-container">
+    <div class="layui-body">
+        <div class="add-user-container">
+            <h2 class="add-user-title">Add User</h2>
+            <form class="layui-form" id="addUserForm" action="#">
 
-        <hr class="layui-bg-blue">
-        <h1 style="text-align:center">Add User</h1>
-        <hr class="layui-bg-blue" style="margin-bottom: 40px">
+                <div class="add-user-form-item">
+                    <label class="add-user-form-label">User Name</label>
+                    <div class="add-user-input-wrapper">
+                        <input type="text" id="userName" name="userName" lay-verify="required"
+                               placeholder="Please enter user name" autocomplete="off" class="layui-input" autofocus>
+                    </div>
+                </div>
 
-        <form class="layui-form" id="addUserForm" action="#">
+                <div class="add-user-form-item">
+                    <label class="add-user-form-label">Password</label>
+                    <div class="add-user-input-wrapper">
+                        <input type="password" id="password" name="userPwd" lay-verify="required"
+                               placeholder="Please enter password" class="layui-input">
+                    </div>
+                </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">User Name</label>
-                <input type="text" class="layui-input layui-input-inline" id="userName" autocomplete="off" autofocus
-                       name="userName" lay-verify="required"
-                       placeholder="Please enter user name"><br><br>
-            </div>
+                <div class="add-user-form-item">
+                    <label class="add-user-form-label">Email</label>
+                    <div class="add-user-input-wrapper">
+                        <input type="text" id="email" name="userEmail" lay-verify="email"
+                               placeholder="Please enter Email address" class="layui-input">
+                    </div>
+                </div>
 
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">Password</label>
-                <input class="layui-input layui-input-inline" type="password" id="password"
-                       lay-verify="required" name="userPwd" placeholder="please enter password">
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">Email</label>
-                <input class="layui-input layui-input-inline" type="text" lay-verify="email"
-                       id="email" name="userEmail" placeholder="Please enter Email address">
-            </div>
-
-            <div style="margin-left: 120px">
-                <input class="layui-btn layui-btn-radius" lay-filter="btn_addUser"
-                       id="btn_addUser" type="submit" lay-submit="" value="Add user">
-            </div>
-        </form>
+                <div class="form-submit-container">
+                    <input type="submit" id="btn_addUser" lay-filter="btn_addUser" lay-submit=""
+                           value="Add User" class="layui-btn">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div th:include="common/footer :: footer"></div>
-
 </div>
 
 <script src="/scripts/jquery.min.js"></script>
 <script src="/layui/layui.js"></script>
 <script src="/scripts/admin/addUser.js"></script>
-
 </body>
 </html>

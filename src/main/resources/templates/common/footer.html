@@ -1,17 +1,30 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    &lt;!&ndash; <footer th:fragment="footer">-->
+<!--        <div class="layui-footer">-->
+<!--            MYAAVA - BOOK LENDING SYSTEM                     Address: Edificio Industrial Wang Kai, Edf. Industrial Wang Kai, Macau, Macao-->
+<!--        </div>-->
+<!--    </footer> &ndash;&gt;-->
+<!--    <footer th:fragment="footer">-->
+<!--        <div class="layui-footer" style="overflow: hidden; padding: 10px;">-->
+<!--            <span style="float: left;">MYAAVA - BOOK LENDING SYSTEM</span>-->
+<!--            <span style="float: right;">ADDRESS: Edificio Industrial Wang Kai, Edf. Industrial Wang Kai, Macau</span>-->
+<!--        </div>-->
+<!--    </footer>-->
+<!--    -->
+<!--</head>-->
+<!--</html>-->
+
+<!-- templates/common/footer.html -->
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <!-- <footer th:fragment="footer">
-        <div class="layui-footer">
-            MYAAVA - BOOK LENDING SYSTEM                     Address: Edificio Industrial Wang Kai, Edf. Industrial Wang Kai, Macau, Macao
-        </div>
-    </footer> -->
-    <footer th:fragment="footer">
-        <div class="layui-footer" style="overflow: hidden; padding: 10px;">
-            <span style="float: left;">MYAAVA - BOOK LENDING SYSTEM</span>
-            <span style="float: right;">ADDRESS: Edificio Industrial Wang Kai, Edf. Industrial Wang Kai, Macau</span>
-        </div>
-    </footer>
-    
-</head>
+<body>
+<div th:fragment="footer">
+    <div class="layui-footer footer-wrapper">
+        <span class="footer-left">MYAAVA - BOOK LENDING SYSTEM</span>
+        <span class="footer-right">Edificio Industrial Wang Kai, Edf. Industrial Wang Kai, Macau</span>
+    </div>
+</div>
+</body>
 </html>

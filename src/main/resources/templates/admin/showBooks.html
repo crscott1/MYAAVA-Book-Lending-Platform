@@ -2,10 +2,13 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Administrator-Community Book Lending System</title>
+    <title>Administrator - Community Book Lending System</title>
     <link href="/layui/css/layui.css" rel="stylesheet"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="/css/custom-style.css" rel="stylesheet"/>
 </head>
+
+<body>
 <div class="layui-layout layui-layout-admin">
 
     <div th:include="common/admin_header :: header"></div>
@@ -13,74 +16,60 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree">
-
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">Book Management</a>
+                    <a href="javascript:;">Book Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/addBookPage">&emsp;&emsp;Add New Book</a></dd>
                         <dd><a href="/addCategoryPage?pageNum=1">&emsp;&emsp;New Category</a></dd>
                         <dd class="layui-this"><a href="/showBooksPage">&emsp;&emsp;Search Books</a></dd>
                     </dl>
                 </li>
-
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">User Management</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">User Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/showUsersPage?pageNum=1">&emsp;&emsp;Search User</a></dd>
                         <dd><a href="/addUserPage">&emsp;&emsp;Add User</a></dd>
                     </dl>
                 </li>
-
-                <li class="layui-nav-item ">
-                    <a class="" href="javascript:;">Borrowing Record</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">Borrowing Record</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/allBorrowBooksRecordPage?pageNum=1">&emsp;&emsp;All Records</a></dd>
                     </dl>
                 </li>
-
                 <li class="layui-nav-item"><a href="/adminInfoPage">Personal Information</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="layui-body layui-container">
+    <div class="layui-body search-book-body">
+        <div class="search-book-flex">
 
-        <div class="layui-row">
-
-            <div class="layui-col-md3">
-
-                <hr class="layui-bg-blue">
-                <h2 style="text-align:center">Search Books</h2>
-                <hr class="layui-bg-blue">
-
+            <!-- ✅ 搜索卡片 -->
+            <div class="search-card">
+                <h2 class="add-book-title">Search Books</h2>
                 <form class="layui-form" action="/showBooksResultPageByCategoryId" id="bookCategoryForm">
-
                     <div class="layui-form-item">
-
-                        <div style="margin: 20px;">
-                            <label>Search by Category</label>
-                        </div>
-
-                        <div>
-                            <select lay-verify="required" class="layui-select" id="bookCategory" name="bookCategory">
+                        <label class="layui-form-label">Category</label>
+                        <div class="layui-input-inline">
+                            <select lay-verify="required" id="bookCategory" name="bookCategory">
+                                <option value="">-- Please Select --</option>
                             </select>
                         </div>
                     </div>
 
-                    <input type="text" name="pageNum" value="1" style="display: none">
+                    <input type="hidden" name="pageNum" value="1">
 
-                    <input class="layui-btn" type="submit" lay-submit="" value="Search">
+                    <div class="form-submit-container">
+                        <input class="layui-btn" type="submit" lay-submit="" value="Search">
+                    </div>
                 </form>
             </div>
 
-            <div class="layui-col-md7 layui-col-md-offset2">
-
-                <hr class="layui-bg-blue">
-                <h2 style="text-align:center">Search Results</h2>
-                <hr class="layui-bg-blue">
-
-
-                <table class="layui-table" lay-size="sm">
+            <!-- ✅ 结果卡片 -->
+            <div class="result-card">
+                <h2 class="add-book-title">Search Results</h2>
+                <table class="layui-table layui-form">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -90,50 +79,42 @@
                         <th>Status</th>
                     </tr>
                     </thead>
-
+                    <tbody>
                     <tr th:each="book:${page.getList()}">
-                        <td><label th:text="${book.getBookId()}"></label></td>
-                        <td><label th:text="${book.getBookName()}"></label></td>
-                        <td><label th:text="${book.getBookAuthor()}"></label></td>
-                        <td><label th:text="${book.getBookPublish()}"></label></td>
-                        <td><label th:text="${book.getIsExist()}"></label></td>
+                        <td th:text="${book.getBookId()}"></td>
+                        <td th:text="${book.getBookName()}"></td>
+                        <td th:text="${book.getBookAuthor()}"></td>
+                        <td th:text="${book.getBookPublish()}"></td>
+                        <td th:text="${book.getIsExist()}"></td>
                     </tr>
-
+                    </tbody>
+                    <tfoot>
                     <tr>
                         <td colspan="5">
-                            <div style="margin: auto; width: 160px;">
-
-                                <a id="prePage"
-                                   th:href="@{/showBooksResultPageByCategoryId(pageNum=${page.getPageNum()-1},bookCategory=${bookCategory})}">
+                            <div class="pagination-wrapper">
+                                <a th:href="@{/showBooksResultPageByCategoryId(pageNum=${page.getPageNum()-1},bookCategory=${bookCategory})}">
                                     <button class="layui-btn layui-btn-sm">Last</button>
                                 </a>
-                                <label id="lab1" th:text="${page.getPageNum()}"></label>
-
+                                <span th:text="${page.getPageNum()}"></span>
                                 <span>/</span>
-
-                                <label id="lab2" th:text="${page.getPageCount()}"></label>
-                                <a id="nextPage"
-                                   th:href="@{/showBooksResultPageByCategoryId(pageNum=${page.getPageNum()+1},bookCategory=${bookCategory})}">
+                                <span th:text="${page.getPageCount()}"></span>
+                                <a th:href="@{/showBooksResultPageByCategoryId(pageNum=${page.getPageNum()+1},bookCategory=${bookCategory})}">
                                     <button class="layui-btn layui-btn-sm">Next</button>
                                 </a>
                             </div>
-
                         </td>
                     </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
-
     </div>
-    <div th:include="common/footer :: footer"></div>
 
+    <div th:include="common/footer :: footer"></div>
 </div>
 
 <script src="/scripts/jquery.min.js"></script>
 <script src="/layui/layui.js"></script>
 <script src="/scripts/admin/showBooks.js"></script>
-
 </body>
 </html>
-
-

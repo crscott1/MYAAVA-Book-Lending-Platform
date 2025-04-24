@@ -2,15 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User-Community Book Lending System</title>
+    <title>User - Community Book Lending System</title>
     <link href="/layui/css/layui.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="/css/custom-style.css" rel="stylesheet"/>
+    <style>
+        .borrow-page-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            max-width: 460px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        .borrow-page-card h2 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+        .borrow-input {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .borrow-btn {
+            width: 100%;
+            background-color: #6C63FF;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 
 <body class="layui-layout-body">
-
 <div class="layui-layout layui-layout-admin">
 
-    <div th:include="common/user_header :: header"></div>
+    <div th:include="common/user_header :: header" class="user-header"></div>
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
@@ -24,7 +53,7 @@
                     </dl>
                 </li>
 
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item">
                     <a class="" href="javascript:;">Book Management</a>
                     <dl class="layui-nav-child">
                         <dd><a href="/userReturnBooksPage">&emsp;&emsp;Return Books</a></dd>
@@ -36,23 +65,14 @@
         </div>
     </div>
 
-    <div class="layui-body layui-container">
-
-        <div class="layui-container layui-col-md6 ">
-            <hr class="layui-bg-blue">
-            <h3 style="text-align: center; font-size: xx-large"> User Borrows Books </h3>
-            <hr class="layui-bg-blue">
-        </div>
-
-        <div>
-            <input class=" layui-input-block" placeholder="Please enter the book ID" autocomplete="off" autofocus
+    <div class="layui-body user-index-body">
+        <div class="borrow-page-card">
+            <h2>User Borrows Books</h2>
+            <input class="layui-input borrow-input" placeholder="Please enter the book ID" autocomplete="off" autofocus
                    id="bookId" type="text" name="bookId">
-
-            <button class="layui-btn layui-bg-blue" id="btn1">Confirm Borrowing</button>
+            <button class="layui-btn borrow-btn" id="btn1">Confirm Borrowing</button>
         </div>
-
     </div>
-
 
     <div th:include="common/footer :: footer"></div>
 </div>
