@@ -46,9 +46,9 @@ public class BookServiceImpl implements IBookService {
             List<BorrowingBooks> borrowingBooks = borrowingBooksMapper.selectByExample(borrowingBooksExample);
 
             if (borrowingBooks == null || borrowingBooks.size() < 1) {
-                bookVo.setIsExist("可借");
+                bookVo.setIsExist("Available");
             } else {
-                bookVo.setIsExist("不可借");
+                bookVo.setIsExist("Not Available");
             }
             bookVos.add(bookVo);
         }
@@ -77,9 +77,9 @@ public class BookServiceImpl implements IBookService {
             criteria1.andBookIdEqualTo(b.getBookId());
             List<BorrowingBooks> borrowingBooks = borrowingBooksMapper.selectByExample(borrowingBooksExample);
             if (borrowingBooks == null || borrowingBooks.size() < 1) {
-                bookVo.setIsExist("可借");
+                bookVo.setIsExist("Available");
             } else {
-                bookVo.setIsExist("不可借");
+                bookVo.setIsExist("Not Available");
             }
             bookVos.add(bookVo);
         }
